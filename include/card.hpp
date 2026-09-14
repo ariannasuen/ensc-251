@@ -2,39 +2,17 @@
 #define CARD_HPP
 
 #include <string>
+#include "common.hpp"
 
 /*
 Card class
 Purpose:
 Represents a single playing card in a standard 52-card deck.
 Each card has a rank and a suit.
+
+Suit and Rank are defined once, centrally, in common.hpp so that Card,
+Hand, Deck, Bid, Contract, etc. all share the same enums.
 */
-
-enum class Suit
-{
-    CLUBS,
-    DIAMONDS,
-    HEARTS,
-    SPADES,
-    NO_SUIT
-};
-
-enum class Rank
-{
-    TWO = 2,
-    THREE,
-    FOUR,
-    FIVE,
-    SIX,
-    SEVEN,
-    EIGHT,
-    NINE,
-    TEN,
-    JACK,
-    QUEEN,
-    KING,
-    ACE,
-};
 
 class Card
 {

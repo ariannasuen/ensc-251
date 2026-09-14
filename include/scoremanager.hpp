@@ -14,8 +14,10 @@ public:
     // required tricks.
     bool contractMade(const Contract& contract) const;
 
-    // Applies standard bridge scoring rules for the given contract
-    // result and updates the appropriate team's score.
+    // Applies standard duplicate bridge scoring rules for the given
+    // contract result (trick score, game/part-score bonus, slam bonus,
+    // overtricks, or the appropriate undertrick penalty) and updates
+    // the declaring/defending team's score.
     void awardPoints(const Contract& contract);
 
     int getScore(Team team) const;

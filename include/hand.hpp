@@ -57,7 +57,8 @@ class Hand
 
         /*
         isValidPlay
-        Precondition: index must be valid, leadSuit must be a valid suit.
+        Precondition: index must be valid, leadSuit must be a valid suit
+        (or Suit::NoTrump if no suit has been led yet).
         Postcondition: Returns true if the card at the specified index can be played, false otherwise.
         */
         bool isValidPlay(int index, Suit leadSuit) const;

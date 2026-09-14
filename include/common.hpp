@@ -2,8 +2,10 @@
 
 #include <string>
 
-// Suit of a card. NoTrump is included here as well so that Bid/Contract
-// can reuse the same enum for "strain" (suit or no-trump).
+// Suit of a card. NoTrump is included here too so that Bid/Contract can
+// reuse the same enum for "strain" (a suit, or no-trump). A real Card
+// is never NoTrump; that value is also reused elsewhere (Hand, Trick)
+// as the sentinel for "no suit has been led yet".
 enum class Suit {
     Clubs,
     Diamonds,
@@ -12,9 +14,11 @@ enum class Suit {
     NoTrump
 };
 
-// Rank of a card, Two through Ace.
+// Rank of a card, Two through Ace. Numbered from 2 to match real card
+// ranks, so rankValue()/getRank() comparisons behave sensibly if ever
+// used for point-count or arithmetic later.
 enum class Rank {
-    Two,
+    Two = 2,
     Three,
     Four,
     Five,

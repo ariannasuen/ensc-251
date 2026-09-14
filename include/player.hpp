@@ -4,26 +4,21 @@
 #include <string>
 #include "hand.hpp"
 #include "card.hpp"
+#include "common.hpp"
 
 /*
 Player class
-Purpose: Represents a player in the card game.
+Purpose: Represents a human player in the card game.
 Each player has a name, position, team, and hand of cards.
+
+Position and Team are defined once, centrally, in common.hpp (shared
+with Bid/Contract/BiddingManager), rather than redeclared here.
+
+This class only stores a player's identity and cards. All decisions
+(what to bid, what card to play) are made by the human at the keyboard
+and are handled in main.cpp, which prompts the current player and
+passes the result in via submitBid()/playCard().
 */
-
-enum class Position
-{
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST
-};
-
-enum class Team
-{
-    NORTH_SOUTH,
-    EAST_WEST
-};
 
 class Player
 {
@@ -41,6 +36,15 @@ class Player
         Postcondition: Creates a player with the specified name, position, and team.
         */
         Player(const std::string& name, Position position, Team team);
+
+        /*
+        Constructor from position only
+        Precondition: position is a valid enum.
+        Postcondition: Creates a player seated at the given position, with
+        team derived via teamOf(position) and a default name matching the
+        position (e.g. "North").
+        */
+        explicit Player(Position position);
 
         /*
         Destructor
